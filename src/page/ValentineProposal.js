@@ -191,9 +191,11 @@ const ValentineProposal = () => {
                     }}
                   >
                     <TypewriterText 
-                      text="My Dearest Valentine, 
+                      text="Hey baby!
+                      Thanks for being the best woman in the world
 
-Your love makes every moment magical. I have something special to ask..."
+Your love makes every moment magical.
+I have something special to ask babe..."
                       onComplete={() => setShowButton(true)}
                     />
                   </Typography>
