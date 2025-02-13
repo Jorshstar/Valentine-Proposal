@@ -25,23 +25,28 @@ const theme = createTheme({
 });
 
 function App() {
-  const audioRef = useRef(new Audio('/background-music.mp3'));
+  const audioRef = useRef(new Audio('/audio/background-music.mp3'));
   const [isPlaying, setIsPlaying] = useState(false);
 
   const startMusic = () => {
     if (!isPlaying) {
-      audioRef.current.play();
+      audioRef.current.play().catch(error => {
+        console.log("Audio playback failed:", error);
+      });
       audioRef.current.loop = true;
       setIsPlaying(true);
     }
   };
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     document.addEventListener('click', startMusic, { once: true });
     return () => {
       document.removeEventListener('click', startMusic);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       audioRef.current.pause();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
